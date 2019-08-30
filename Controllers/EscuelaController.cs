@@ -13,9 +13,15 @@ namespace ASP.Controllers
         public IActionResult Index()
         {
             var escuela = new Escuela();
-            escuela.añoFundacion=2005;
-            escuela.EscuelaID = Guid.NewGuid().ToString();
+            escuela.AñoDeCreación=2005;
+            escuela.UniqueId = Guid.NewGuid().ToString();
+            escuela.Ciudad="Bogotá";
+            escuela.Pais="Colombia";
+            escuela.Dirección="Av. 232 #32";
+            escuela.TipoEscuela=TiposEscuela.Secundaria;
+
             escuela.Nombre =  "Platzi";
+            ViewBag.DatoDinamico="dato dinamico";
             return View(escuela);
         }
     }
