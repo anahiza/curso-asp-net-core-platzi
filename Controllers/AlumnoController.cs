@@ -12,32 +12,26 @@ namespace ASP.Controllers
     {
         public IActionResult MultiAlumno()
         {
-             var listaAlumno = GenerarAlumnosAlAzar();
+            
            
             ViewBag.Fecha=DateTime.Now;
-            return View(listaAlumno);
+            return View(_context.Alumnos);
         }
 
          public IActionResult Index()
         {
-             var alumno = new Alumno{Nombre="Anahi", Id=Guid.NewGuid().ToString()}   ;     
+                 
            
-            return View(alumno);
+            return View(_context.Alumnos.FirstOrDefault());
         }
 
-        private List<Alumno> GenerarAlumnosAlAzar()
-        {
-            string[] nombre1 = { "Alba", "Felipa", "Eusebio", "Farid", "Donald", "Alvaro", "Nicolás" };
-            string[] apellido1 = { "Ruiz", "Sarmiento", "Uribe", "Maduro", "Trump", "Toledo", "Herrera" };
-            string[] nombre2 = { "Freddy", "Anabel", "Rick", "Murty", "Silvana", "Diomedes", "Nicomedes", "Teodoro" };
+        
+        private EscuelaContext _context;
 
-            var listaAlumnos = from n1 in nombre1
-                               from n2 in nombre2
-                               from a1 in apellido1
-                               select new Alumno { Nombre = $"{n1} {n2} {a1}",
-                               Id=Guid.NewGuid().ToString() };
+        public AlumnoController(EscuelaContext context)
+    {
 
-            return listaAlumnos.OrderBy((al) => al.Id).ToList();
-        }
+            _context=context;
+    }
     }
 }

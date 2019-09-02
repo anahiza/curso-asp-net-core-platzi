@@ -10,7 +10,7 @@ namespace ASP.Controllers
 {
     public class EscuelaController : Controller
        {
-        private EscuelaContext _context;
+        
         public IActionResult Index()
         {
             
@@ -20,6 +20,7 @@ namespace ASP.Controllers
 
             return View(escuela);
         }
+        private EscuelaContext _context;
 
         public EscuelaController(EscuelaContext context)
     {
