@@ -9,20 +9,22 @@ using ASP.Models;
 namespace ASP.Controllers
 {
     public class EscuelaController : Controller
-    {
+       {
+        private EscuelaContext _context;
         public IActionResult Index()
         {
-            var escuela = new Escuela();
-            escuela.AñoDeCreación=2005;
-            escuela.UniqueId = Guid.NewGuid().ToString();
-            escuela.Ciudad="Bogotá";
-            escuela.Pais="Colombia";
-            escuela.Dirección="Av. 232 #32";
-            escuela.TipoEscuela=TiposEscuela.Secundaria;
+            
 
-            escuela.Nombre =  "Platzi";
+            var escuela = _context.Escuelas.FirstOrDefault();
             ViewBag.DatoDinamico="dato dinamico";
+
             return View(escuela);
         }
+
+        public EscuelaController(EscuelaContext context)
+    {
+
+            _context=context;
+    }
     }
 }

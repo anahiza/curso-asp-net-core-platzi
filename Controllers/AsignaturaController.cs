@@ -14,15 +14,15 @@ namespace ASP.Controllers
         {
              var listaAsignaturas = new List<Asignatura>(){
                             new Asignatura{Nombre="Matemáticas",
-                            UniqueId=Guid.NewGuid().ToString()
+                            Id=Guid.NewGuid().ToString()
                             } ,
-                            new Asignatura{Nombre="Educación Física",UniqueId=Guid.NewGuid().ToString()},
+                            new Asignatura{Nombre="Educación Física",Id=Guid.NewGuid().ToString()},
                             new Asignatura{Nombre="Castellano",
-                            UniqueId=Guid.NewGuid().ToString()},
+                            Id=Guid.NewGuid().ToString()},
                             new Asignatura{Nombre="Ciencias Naturales",
-                            UniqueId=Guid.NewGuid().ToString()},
+                            Id=Guid.NewGuid().ToString()},
                             new Asignatura{Nombre="Programacion",
-                            UniqueId=Guid.NewGuid().ToString()}
+                            Id=Guid.NewGuid().ToString()}
                 };
            
             ViewBag.Fecha=DateTime.Now;
@@ -31,7 +31,7 @@ namespace ASP.Controllers
 
          public IActionResult Index()
         {
-             var asignatura = new Asignatura{Nombre="Programacion", UniqueId=Guid.NewGuid().ToString()}   ;     
+             var asignatura = new Asignatura{Nombre="Programacion", Id=Guid.NewGuid().ToString()}   ;     
            
             return View(asignatura);
         }
