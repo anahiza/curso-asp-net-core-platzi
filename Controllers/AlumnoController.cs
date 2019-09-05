@@ -10,6 +10,22 @@ namespace ASP.Controllers
 {
     public class AlumnoController : Controller
     {
+          [Route("Alumno/Index")]
+        [Route("Alumno/Index/{id}")]
+ public IActionResult Index(string id)
+        {        
+            if(!string.IsNullOrWhiteSpace(id))  
+            {
+                var alumno = from al in _context.Alumnos
+                                where al.Id == id
+                                select al;
+                return View(alumno.FirstOrDefault());
+
+            }     
+            else{
+                return View("MultiAlumno",_context.Alumnos);
+            }
+        }
         public IActionResult MultiAlumno()
         {
             
@@ -18,12 +34,6 @@ namespace ASP.Controllers
             return View(_context.Alumnos);
         }
 
-         public IActionResult Index()
-        {
-                 
-           
-            return View(_context.Alumnos.FirstOrDefault());
-        }
 
         
         private EscuelaContext _context;
